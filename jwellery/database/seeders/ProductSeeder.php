@@ -16,7 +16,7 @@ class ProductSeeder extends Seeder
         // Danh sách tên ảnh có sẵn
         $imageNames = [];
         for ($k = 1; $k <= 150; $k++) {
-            $imageNames[] = 'images/products/product-' . $k . '.jpg';
+            $imageNames[] = 'images/product-' . $k . '.jpg';
         }
 
         // Lấy tất cả ID từ bảng categories

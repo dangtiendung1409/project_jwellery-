@@ -19,3 +19,30 @@
 
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var successAlert = document.getElementById('successAlert');
+        var errorAlert = document.getElementById('errorAlert');
+
+        // Hiện thông báo thành công
+        if (successAlert) {
+            setTimeout(function() {
+                successAlert.classList.add('fade-out');
+                setTimeout(function() {
+                    successAlert.style.display = 'none';
+                }, 1000); // Thời gian hiệu ứng fade-out
+            }, 3000); // Thời gian hiển thị thông báo
+        }
+
+        // Hiện thông báo lỗi
+        if (errorAlert) {
+            setTimeout(function() {
+                errorAlert.classList.add('fade-out');
+                setTimeout(function() {
+                    errorAlert.style.display = 'none';
+                }, 1000); // Thời gian hiệu ứng fade-out
+            }, 3000); // Thời gian hiển thị thông báo
+        }
+    });
+
+</script>

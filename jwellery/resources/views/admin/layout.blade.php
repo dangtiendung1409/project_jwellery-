@@ -18,7 +18,22 @@
         <div class="layout-page">
 
             <x-admin-nav></x-admin-nav>
-
+            @if (session('successMessage') || session('errorMessage'))
+                <div id="alertsContainer">
+                    @if (session('successMessage'))
+                        <div class="alert alert-success" id="successAlert">
+                            <i class="bx bx-check-circle" style="margin-right: 8px;"></i>
+                            <span>{{ session('successMessage') }}</span>
+                        </div>
+                    @endif
+                    @if (session('errorMessage'))
+                        <div class="alert alert-danger" id="errorAlert">
+                            <i class="bx bx-error-circle" style="margin-right: 8px;"></i>
+                            <span>{{ session('errorMessage') }}</span>
+                        </div>
+                    @endif
+                </div>
+            @endif
             <!-- Content wrapper -->
             <div class="content-wrapper">
                 @yield('content')

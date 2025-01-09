@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{{asset('Admin/assets/vendor/css/core.css')}}" class="template-customizer-core-css" />
     <link rel="stylesheet" href="{{asset('Admin/assets/vendor/css/theme-default.css')}}" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{asset('Admin/assets/css/demo.css')}}" />
-
+    <link rel="stylesheet" href="{{asset('Admin/assets/css/toast.css')}}" />
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{asset('Admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />
 

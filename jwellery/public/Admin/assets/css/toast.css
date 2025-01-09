@@ -1,0 +1,43 @@
+
+#alertsContainer {
+    position: fixed;
+    top: 90px; /* Cách trên cùng 20px */
+    right: 20px; /* Cách bên phải 20px */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000; /* Đảm bảo thông báo nổi trên tất cả các thành phần khác */
+}
+
+.alert {
+    padding: 15px;
+    border-radius: 4px;
+    background-color: red;
+    border: 1px solid red;
+    color: white;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+    max-width: 300px; /* Giới hạn chiều rộng */
+    box-shadow: 0 0 10px rgba(0,0,0,0.2); /* Thêm hiệu ứng đổ bóng */
+}
+
+.alert-danger {
+    background-color: red;
+    border: 1px solid red;
+    color: white;
+}
+
+.alert-success {
+    background-color: green;
+    border: 1px solid green;
+    color: white;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+.help.is-danger {
+    color: red;
+    font-weight: bold; /* Nếu bạn muốn chữ đậm */
+}
