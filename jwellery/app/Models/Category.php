@@ -20,9 +20,9 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
-    public function subcategories()
+    public function parent()
     {
-        return $this->hasMany(Category::class,'parent_category_id','id');
+        return $this->belongsTo(Category::class, 'parent_category_id');
     }
 }
 

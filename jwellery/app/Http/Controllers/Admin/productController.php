@@ -73,11 +73,11 @@ class productController extends Controller
                 // Đặt tên ảnh duy nhất
                 $imageName = time() . '_' . uniqid() . '.' . $image->extension();
                 // Di chuyển ảnh vào thư mục public/images
-                $image->move(public_path('images'), $imageName);
+                $image->move(public_path('images/product/'), $imageName);
 
                 // Lưu thông tin ảnh mới vào bảng product_images
                 $product->images()->create([
-                    'image_path' => 'images/' . $imageName,
+                    'image_path' => 'images/product/' . $imageName,
                 ]);
             }
         }

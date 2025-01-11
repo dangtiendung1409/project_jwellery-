@@ -138,6 +138,13 @@
                     </a>
                 </li>
             </ul>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="/admin/category" class="menu-link">
+                        <div data-i18n="Basic">Category</div>
+                    </a>
+                </li>
+            </ul>
         </li>
 
     </ul>
