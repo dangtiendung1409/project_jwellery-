@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('thumbnail')->nullable();
             $table->string('tag', 100)->nullable();
             $table->text('content')->nullable();
-            $table->dateTime('blog_date');
             $table->timestamps();
         });
     }

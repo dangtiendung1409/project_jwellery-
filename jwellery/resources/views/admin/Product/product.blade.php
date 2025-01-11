@@ -18,6 +18,11 @@
                     </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
+                    @if($products->isEmpty())
+                        <tr>
+                            <td colspan="6" class="text-center text-danger">No data available</td>
+                        </tr>
+                    @else
                     @foreach($products as $product)
                         <tr>
                             <td>{{ $product->product_code }}</td>
@@ -48,51 +53,60 @@
                             </td>
                         </tr>
                     @endforeach
+                    @endif
                     </tbody>
                 </table>
-                <!-- Hiển thị các liên kết phân trang tùy chỉnh -->
-                <nav aria-label="Page navigation" style="margin-left: 12px">
-                    <ul class="pagination">
-                        <!-- Link tới trang đầu tiên -->
-                        <li class="page-item {{ ($products->currentPage() == 1) ? ' disabled' : '' }}">
-                            <a class="page-link" href="{{ $products->url(1) }}"><i class="tf-icon bx bx-chevrons-left"></i></a>
-                        </li>
-                        <!-- Link tới trang trước -->
-                        <li class="page-item {{ ($products->currentPage() == 1) ? ' disabled' : '' }}">
-                            <a class="page-link" href="{{ $products->previousPageUrl() }}"><i class="tf-icon bx bx-chevron-left"></i></a>
-                        </li>
-                        <!-- Hiển thị các liên kết trang -->
-                        @if ($products->lastPage() > 1)
-                            <!-- Hiển thị trang đầu tiên -->
-                            <li class="page-item {{ ($products->currentPage() == 1) ? ' active' : '' }}">
-                                <a class="page-link" href="{{ $products->url(1) }}">1</a>
+                @if($products->total() > 0)
+                    <nav aria-label="Page navigation" style="margin-left: 12px">
+                        <ul class="pagination">
+                            <!-- Link tới trang đầu tiên -->
+                            <li class="page-item {{ ($products->currentPage() == 1) ? ' disabled' : '' }}">
+                                <a class="page-link" href="{{ $products->url(1) }}"><i class="tf-icon bx bx-chevrons-left"></i></a>
                             </li>
-                            @if ($products->currentPage() > 3)
-                                <li class="page-item disabled"><span class="page-link">...</span></li>
-                            @endif
-                            @for ($i = max(2, $products->currentPage() - 1); $i <= min($products->currentPage() + 1, $products->lastPage() - 1); $i++)
-                                <li class="page-item {{ ($products->currentPage() == $i) ? ' active' : '' }}">
-                                    <a class="page-link" href="{{ $products->url($i) }}">{{ $i }}</a>
+                            <!-- Link tới trang trước -->
+                            <li class="page-item {{ ($products->currentPage() == 1) ? ' disabled' : '' }}">
+                                <a class="page-link" href="{{ $products->previousPageUrl() }}"><i class="tf-icon bx bx-chevron-left"></i></a>
+                            </li>
+                            @if ($products->total() <= 10)
+                                <!-- Hiển thị trang đầu tiên -->
+                                <li class="page-item active">
+                                    <a class="page-link" href="{{ $products->url(1) }}">1</a>
                                 </li>
-                            @endfor
-                            @if ($products->currentPage() < $products->lastPage() - 2)
-                                <li class="page-item disabled"><span class="page-link">...</span></li>
+                            @else
+                                <!-- Hiển thị các liên kết trang -->
+                                @if ($products->lastPage() > 1)
+                                    <!-- Hiển thị trang đầu tiên -->
+                                    <li class="page-item {{ ($products->currentPage() == 1) ? ' active' : '' }}">
+                                        <a class="page-link" href="{{ $products->url(1) }}">1</a>
+                                    </li>
+                                    @if ($products->currentPage() > 3)
+                                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                                    @endif
+                                    @for ($i = max(2, $products->currentPage() - 1); $i <= min($products->currentPage() + 1, $products->lastPage() - 1); $i++)
+                                        <li class="page-item {{ ($products->currentPage() == $i) ? ' active' : '' }}">
+                                            <a class="page-link" href="{{ $products->url($i) }}">{{ $i }}</a>
+                                        </li>
+                                    @endfor
+                                    @if ($products->currentPage() < $products->lastPage() - 2)
+                                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                                    @endif
+                                    <!-- Hiển thị trang cuối cùng -->
+                                    <li class="page-item {{ ($products->currentPage() == $products->lastPage()) ? ' active' : '' }}">
+                                        <a class="page-link" href="{{ $products->url($products->lastPage()) }}">{{ $products->lastPage() }}</a>
+                                    </li>
+                                @endif
                             @endif
-                            <!-- Hiển thị trang cuối cùng -->
-                            <li class="page-item {{ ($products->currentPage() == $products->lastPage()) ? ' active' : '' }}">
-                                <a class="page-link" href="{{ $products->url($products->lastPage()) }}">{{ $products->lastPage() }}</a>
+                            <!-- Link tới trang kế tiếp -->
+                            <li class="page-item {{ ($products->currentPage() == $products->lastPage()) ? ' disabled' : '' }}">
+                                <a class="page-link" href="{{ $products->nextPageUrl() }}"><i class="tf-icon bx bx-chevron-right"></i></a>
                             </li>
-                        @endif
-                        <!-- Link tới trang kế tiếp -->
-                        <li class="page-item {{ ($products->currentPage() == $products->lastPage()) ? ' disabled' : '' }}">
-                            <a class="page-link" href="{{ $products->nextPageUrl() }}"><i class="tf-icon bx bx-chevron-right"></i></a>
-                        </li>
-                        <!-- Link tới trang cuối cùng -->
-                        <li class="page-item {{ ($products->currentPage() == $products->lastPage()) ? ' disabled' : '' }}">
-                            <a class="page-link" href="{{ $products->url($products->lastPage()) }}"><i class="tf-icon bx bx-chevrons-right"></i></a>
-                        </li>
-                    </ul>
-                </nav>
+                            <!-- Link tới trang cuối cùng -->
+                            <li class="page-item {{ ($products->currentPage() == $products->lastPage()) ? ' disabled' : '' }}">
+                                <a class="page-link" href="{{ $products->url($products->lastPage()) }}"><i class="tf-icon bx bx-chevrons-right"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                @endif
             </div>
         </div>
     </div>

@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\dashboardController;
 use App\Http\Controllers\Admin\productController;
 use App\Http\Controllers\Admin\categoryController;
+use App\Http\Controllers\Admin\blogController;
 //dashboard
 Route::get('/dashboard',[dashboardController::class,'dashboard'])
     ->name('admin.dashboard');
@@ -36,3 +37,18 @@ Route::post('/updateCategory/{id}', [categoryController::class, 'updateCategory'
     ->name('admin.updateCategory');
 Route::delete('/deleteCategory/{id}', [categoryController::class, 'deleteCategory'])
     ->name('admin.deleteCategory');
+
+// Blog
+// Blog
+Route::get('/blogs', [blogController::class, 'blogs'])
+    ->name('admin.blogs');
+Route::get('/addBlog', [blogController::class, 'addBlog'])
+    ->name('admin.addBlog');
+Route::post('/storeBlog', [blogController::class, 'storeBlog'])
+    ->name('admin.storeBlog');
+Route::get('/editBlog/{id}', [blogController::class, 'editBlog'])
+    ->name('admin.editBlog');
+Route::post('/updateBlog/{id}', [blogController::class, 'updateBlog'])
+    ->name('admin.updateBlog');
+Route::delete('/deleteBlog/{id}', [blogController::class, 'deleteBlog'])
+    ->name('admin.deleteBlog');

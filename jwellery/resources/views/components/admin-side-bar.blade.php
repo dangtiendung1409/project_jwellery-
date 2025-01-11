@@ -146,6 +146,12 @@
                 </li>
             </ul>
         </li>
+        <li class="menu-item">
+            <a href="/admin/blogs" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-news"></i>
+                <div data-i18n="Tables">Blog</div>
+            </a>
+        </li>
 
     </ul>
 </aside>

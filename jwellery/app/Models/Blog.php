@@ -1,5 +1,7 @@
 <?php
 
+// Trong model Blog của bạn (App\Models\Blog.php)
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,6 +11,6 @@ class Blog extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'thumbnail', 'tag', 'content', 'blog_date'];
+    protected $fillable = ['title', 'thumbnail', 'tag', 'content'];
 }
 
