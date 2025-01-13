@@ -134,14 +134,14 @@
             <ul class="menu-sub">
                 <li class="menu-item">
                     <a href="/admin/products" class="menu-link">
-                        <div data-i18n="Basic">Product</div>
+                        <div data-i18n="Basic">List Product</div>
                     </a>
                 </li>
             </ul>
             <ul class="menu-sub">
                 <li class="menu-item">
                     <a href="/admin/category" class="menu-link">
-                        <div data-i18n="Basic">Category</div>
+                        <div data-i18n="Basic">List Category</div>
                     </a>
                 </li>
             </ul>
@@ -151,6 +151,26 @@
                 <i class="menu-icon tf-icons bx bx-news"></i>
                 <div data-i18n="Tables">Blog</div>
             </a>
+        </li>
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-shopping-bag"></i> <!-- Thay đổi ở đây -->
+                <div data-i18n="Product Management">Order Management</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="/admin/orders" class="menu-link">
+                        <div data-i18n="Basic">List Order</div>
+                    </a>
+                </li>
+            </ul>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="/admin/category" class="menu-link">
+                        <div data-i18n="Basic">List Category</div>
+                    </a>
+                </li>
+            </ul>
         </li>
 
     </ul>

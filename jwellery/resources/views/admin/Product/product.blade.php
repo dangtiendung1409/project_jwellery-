@@ -25,7 +25,7 @@
                     @else
                     @foreach($products as $product)
                         <tr>
-                            <td>{{ $product->product_code }}</td>
+                            <td><strong>{{ $product->product_code }}</strong></td>
                             <td>
                                 @if($product->images->isNotEmpty())
                                     <img src="{{ asset($product->images->first()->image_path) }}" alt="Product Image" style="width: 150px; height: 150px;">

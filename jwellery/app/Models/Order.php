@@ -10,7 +10,6 @@ class Order extends Model
 
     protected $fillable = [
         'user_id',
-        'order_date',
         'total_amount',
         'status',
         'is_paid',
@@ -36,6 +35,10 @@ class Order extends Model
     public function orderDetails()
     {
         return $this->hasMany(OrderDetail::class);
+    }
+    public function getFullAddressAttribute()
+    {
+        return "{$this->province}, {$this->district}, {$this->ward}, {$this->address_detail}";
     }
 }
 

@@ -84,10 +84,7 @@ class categoryController extends Controller
             unlink(public_path($category->image));
         }
 
-        // Xóa category
         $category->delete();
-
-        // Sử dụng Session::flash để lưu thông báo
         Session::flash('successMessage', 'Category deleted successfully!');
 
         return redirect()->route('admin.category')->with('success', 'Category deleted successfully.');

@@ -31,16 +31,14 @@ class OrderSeeder extends Seeder
             $user = $users->random();
 
             // Generate order data
-            $orderDate = now()->subDays(rand(1, 30));
             $orderCode = strtoupper(Str::random(8)); // Example: 4GO85B46
             $secureToken = Str::uuid()->toString(); // Generate UUID
-            $status = ['pending', 'completed', 'cancelled', 'shipping', 'shipped', 'confirm'][rand(0, 5)];
+            $status = ['pending', 'complete', 'cancel', 'shipping', 'shipped', 'confirmed'][rand(0, 5)];
             $isPaid = ['paid', 'unpaid'][rand(0, 1)];
             $totalAmount = 0;
 
             $orderId = DB::table('orders')->insertGetId([
                 'user_id' => $user->id,
-                'order_date' => $orderDate,
                 'total_amount' => 0, // Placeholder, will calculate later
                 'status' => $status,
                 'is_paid' => $isPaid,

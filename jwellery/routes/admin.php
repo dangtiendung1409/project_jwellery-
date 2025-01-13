@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\dashboardController;
 use App\Http\Controllers\Admin\productController;
 use App\Http\Controllers\Admin\categoryController;
 use App\Http\Controllers\Admin\blogController;
+use App\Http\Controllers\Admin\orderController;
 //dashboard
 Route::get('/dashboard',[dashboardController::class,'dashboard'])
     ->name('admin.dashboard');
@@ -39,7 +40,6 @@ Route::delete('/deleteCategory/{id}', [categoryController::class, 'deleteCategor
     ->name('admin.deleteCategory');
 
 // Blog
-// Blog
 Route::get('/blogs', [blogController::class, 'blogs'])
     ->name('admin.blogs');
 Route::get('/addBlog', [blogController::class, 'addBlog'])
@@ -52,3 +52,11 @@ Route::post('/updateBlog/{id}', [blogController::class, 'updateBlog'])
     ->name('admin.updateBlog');
 Route::delete('/deleteBlog/{id}', [blogController::class, 'deleteBlog'])
     ->name('admin.deleteBlog');
+
+// Order
+Route::get('/orders', [orderController::class, 'orders'])
+    ->name('admin.orders');
+Route::get('/orders/details/{id}', [orderController::class, 'orderDetails'])
+    ->name('admin.orderDetails');
+Route::patch('/orders/update-status/{id}/{status}', [orderController::class, 'updateOrderStatus'])
+    ->name('admin.updateOrderStatus');
