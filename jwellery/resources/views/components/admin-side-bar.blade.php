@@ -147,12 +147,6 @@
             </ul>
         </li>
         <li class="menu-item">
-            <a href="/admin/blogs" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-news"></i>
-                <div data-i18n="Tables">Blog</div>
-            </a>
-        </li>
-        <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-shopping-bag"></i> <!-- Thay đổi ở đây -->
                 <div data-i18n="Product Management">Order Management</div>
@@ -172,6 +166,17 @@
                 </li>
             </ul>
         </li>
-
+        <li class="menu-item">
+            <a href="/admin/reviews" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-star"></i> <!-- Thay đổi icon ở đây -->
+                <div data-i18n="Tables">Review Product</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="/admin/blogs" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-news"></i>
+                <div data-i18n="Tables">Blog</div>
+            </a>
+        </li>
     </ul>
 </aside>

@@ -55,4 +55,8 @@ class Product extends Model
     {
         return $this->hasMany(ProductImage::class);
     }
+    public function averageAcceptedRating()
+    {
+        return $this->reviews()->where('status', 'accept')->avg('rating_value');
+    }
 }

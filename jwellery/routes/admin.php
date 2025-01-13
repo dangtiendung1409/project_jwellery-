@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\productController;
 use App\Http\Controllers\Admin\categoryController;
 use App\Http\Controllers\Admin\blogController;
 use App\Http\Controllers\Admin\orderController;
+use App\Http\Controllers\Admin\reviewController;
 //dashboard
 Route::get('/dashboard',[dashboardController::class,'dashboard'])
     ->name('admin.dashboard');
@@ -60,3 +61,9 @@ Route::get('/orders/details/{id}', [orderController::class, 'orderDetails'])
     ->name('admin.orderDetails');
 Route::patch('/orders/update-status/{id}/{status}', [orderController::class, 'updateOrderStatus'])
     ->name('admin.updateOrderStatus');
+
+// Review
+Route::get('/reviews', [reviewController::class, 'reviews'])
+    ->name('admin.reviews');
+Route::patch('/reviews/update-status/{id}/{status}', [reviewController::class, 'updateReviewStatus'])
+    ->name('admin.updateReviewStatus');

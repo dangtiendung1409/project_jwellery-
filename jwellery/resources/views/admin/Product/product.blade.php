@@ -14,6 +14,7 @@
                         <th>Product Name</th>
                         <th>Price</th>
                         <th>Quantity</th>
+                        <th>Average Rating</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -33,9 +34,32 @@
                                     <img src="{{ asset('path/to/default/image.png') }}" alt="Default Image" style="width: 150px; height: 150px;">
                                 @endif
                             </td>
-                            <td>{{ $product->product_name }}</td>
+                            <td style="word-wrap: break-word; word-break: break-word; white-space: normal;">
+                                {{$product->product_name}}
+                            </td>
+
                             <td>${{ $product->price }}</td>
                             <td>{{ $product->qty }}</td>
+                            <td>
+                                @php
+                                    $averageRating = $product->averageAcceptedRating();
+                                    $fullStars = floor($averageRating);
+                                    $halfStar = $averageRating - $fullStars >= 0.5 ? 1 : 0;
+                                @endphp
+                                @if($averageRating > 0)
+                                    @for ($i = 0; $i < $fullStars; $i++)
+                                        <i class="bx bxs-star text-warning"></i>
+                                    @endfor
+                                    @if ($halfStar)
+                                        <i class="bx bxs-star-half text-warning"></i>
+                                    @endif
+                                    @for ($i = $fullStars + $halfStar; $i < 5; $i++)
+                                        <i class="bx bx-star text-warning"></i>
+                                    @endfor
+                                @else
+                                    No reviews
+                                @endif
+                            </td>
                             <td>
                                 <a href="{{ route('admin.detailProduct', $product->id) }}" class="btn btn-info">
                                     <i class="bx bx-show me-1"></i>
