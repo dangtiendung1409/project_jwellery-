@@ -6,9 +6,15 @@ use App\Http\Controllers\Admin\categoryController;
 use App\Http\Controllers\Admin\blogController;
 use App\Http\Controllers\Admin\orderController;
 use App\Http\Controllers\Admin\reviewController;
+use App\Http\Controllers\Admin\accountSettingController;
+use App\Http\Controllers\Admin\userController;
 //dashboard
 Route::get('/dashboard',[dashboardController::class,'dashboard'])
     ->name('admin.dashboard');
+
+// user management
+Route::get('/users',[userController::class,'users'])
+    ->name('admin.users');
 
 // product management
 Route::get('/products',[productController::class,'products'])
@@ -67,3 +73,7 @@ Route::get('/reviews', [reviewController::class, 'reviews'])
     ->name('admin.reviews');
 Route::patch('/reviews/update-status/{id}/{status}', [reviewController::class, 'updateReviewStatus'])
     ->name('admin.updateReviewStatus');
+
+// Account setting
+Route::get('/profile', [accountSettingController::class, 'profile'])
+    ->name('admin.profile');
