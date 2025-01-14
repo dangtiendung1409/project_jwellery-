@@ -43,8 +43,8 @@
                         </td>
                         <td>{{$user->created_at ? $user->created_at->format('d/m/Y') : 'N/A' }}</td>
                         <td>
-                            <a href="" class="btn btn-info">
-                                <i class="bx bx-cart me-1"></i> <!-- Thay đổi icon ở đây -->
+                            <a href="{{ route('admin.userOrders', $user->id) }}" class="btn btn-info">
+                                <i class="bx bx-cart me-1"></i>
                             </a>
                         </td>
                     </tr>

@@ -13,8 +13,10 @@ Route::get('/dashboard',[dashboardController::class,'dashboard'])
     ->name('admin.dashboard');
 
 // user management
-Route::get('/users',[userController::class,'users'])
+Route::get('/users', [userController::class, 'users'])
     ->name('admin.users');
+Route::get('/users/{id}/orders', [userController::class, 'userOrders'])
+    ->name('admin.userOrders');
 
 // product management
 Route::get('/products',[productController::class,'products'])
