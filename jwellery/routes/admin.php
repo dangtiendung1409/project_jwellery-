@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\orderController;
 use App\Http\Controllers\Admin\reviewController;
 use App\Http\Controllers\Admin\accountSettingController;
 use App\Http\Controllers\Admin\userController;
+Route::middleware(['auth', 'role:admin'])->group(function () {
 //dashboard
 Route::get('/dashboard',[dashboardController::class,'dashboard'])
     ->name('admin.dashboard');
@@ -79,3 +80,10 @@ Route::patch('/reviews/update-status/{id}/{status}', [reviewController::class, '
 // Account setting
 Route::get('/profile', [accountSettingController::class, 'profile'])
     ->name('admin.profile');
+Route::post('/profile', [accountSettingController::class, 'updateProfile'])
+    ->name('admin.profile.update');
+Route::get('/changePassword', [accountSettingController::class, 'changePassword'])
+    ->name('admin.changePassword');
+Route::post('/changePassword', [accountSettingController::class, 'updatePassword'])
+    ->name('admin.changePassword.update');
+});

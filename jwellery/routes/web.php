@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+Route::get('loginAdmin', [AuthController::class, 'showLoginForm'])->name('loginAdmin');
+Route::post('loginAdmin', [AuthController::class, 'login']);
+Route::post('logoutAdmin', [AuthController::class, 'logout'])->name('logoutAdmin');
+
+Route::get('/{vue_capture?}', function() {
+    return view('index');
+})->where('vue_capture', '[\/\w\.-]*');

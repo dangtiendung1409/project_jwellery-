@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="{{asset('Admin/assets/vendor/libs/apex-charts/apex-charts.css')}}" />
 
     <!-- Page CSS -->
-
+    <link rel="stylesheet" href="{{asset('Admin/assets/vendor/css/pages/page-auth.css')}}" />
     <!-- Helpers -->
     <script src="{{asset('Admin/assets/vendor/js/helpers.js')}}"></script>
 

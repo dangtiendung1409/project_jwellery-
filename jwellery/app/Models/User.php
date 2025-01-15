@@ -43,7 +43,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
-
+    public function hasRole($role)
+    {
+        return $this->role->roleName === $role;
+    }
     public function cart()
     {
         return $this->hasMany(Cart::class);
