@@ -1,539 +1,690 @@
-@extends('admin/layout')
-@section('content')
-    <!-- Content -->
-
+@extends("admin.layout")
+@section("content")
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
-            <div class="col-lg-8 mb-4 order-0">
+            <!-- Đảm bảo các thẻ nằm cùng một hàng -->
+            <div class="col-lg-3 col-md-6 col-12 mb-4">
                 <div class="card">
-                    <div class="d-flex align-items-end row">
-                        <div class="col-sm-7">
-                            <div class="card-body">
-                                <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
-                                <p class="mb-4">
-                                    You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
-                                    your profile.
-                                </p>
-
-                                <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
-                            </div>
-                        </div>
-                        <div class="col-sm-5 text-center text-sm-left">
-                            <div class="card-body pb-0 px-0 px-md-4">
-                                <img
-                                    src="{{asset('Admin/assets/img/illustrations/man-with-laptop-light.png')}}"
-                                    height="140"
-                                    alt="View Badge User"
-                                    data-app-dark-img="illustrations/man-with-laptop-dark.png"
-                                    data-app-light-img="illustrations/man-with-laptop-light.png"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 order-1">
-                <div class="row">
-                    <div class="col-lg-6 col-md-12 col-6 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-title d-flex align-items-start justify-content-between">
-                                    <div class="avatar flex-shrink-0">
-                                        <img
-                                            src="{{asset('Admin/assets/img/icons/unicons/chart-success.png')}}"
-                                            alt="chart success"
-                                            class="rounded"
-                                        />
-                                    </div>
-                                    <div class="dropdown">
-                                        <button
-                                            class="btn p-0"
-                                            type="button"
-                                            id="cardOpt3"
-                                            data-bs-toggle="dropdown"
-                                            aria-haspopup="true"
-                                            aria-expanded="false"
-                                        >
-                                            <i class="bx bx-dots-vertical-rounded"></i>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                                            <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <span class="fw-semibold d-block mb-1">Profit</span>
-                                <h3 class="card-title mb-2">$12,628</h3>
-                                <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12 col-6 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-title d-flex align-items-start justify-content-between">
-                                    <div class="avatar flex-shrink-0">
-                                        <img
-                                            src="{{asset('Admin/assets/img/icons/unicons/wallet-info.png')}}"
-                                            alt="Credit Card"
-                                            class="rounded"
-                                        />
-                                    </div>
-                                    <div class="dropdown">
-                                        <button
-                                            class="btn p-0"
-                                            type="button"
-                                            id="cardOpt6"
-                                            data-bs-toggle="dropdown"
-                                            aria-haspopup="true"
-                                            aria-expanded="false"
-                                        >
-                                            <i class="bx bx-dots-vertical-rounded"></i>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
-                                            <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <span>Sales</span>
-                                <h3 class="card-title text-nowrap mb-1">$4,679</h3>
-                                <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Total Revenue -->
-            <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
-                <div class="card">
-                    <div class="row row-bordered g-0">
-                        <div class="col-md-8">
-                            <h5 class="card-header m-0 me-2 pb-3">Total Revenue</h5>
-                            <div id="totalRevenueChart" class="px-2"></div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <div class="dropdown">
-                                        <button
-                                            class="btn btn-sm btn-outline-primary dropdown-toggle"
-                                            type="button"
-                                            id="growthReportId"
-                                            data-bs-toggle="dropdown"
-                                            aria-haspopup="true"
-                                            aria-expanded="false"
-                                        >
-                                            2022
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId">
-                                            <a class="dropdown-item" href="javascript:void(0);">2021</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">2020</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">2019</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="growthChart"></div>
-                            <div class="text-center fw-semibold pt-3 mb-2">62% Company Growth</div>
-
-                            <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
-                                <div class="d-flex">
-                                    <div class="me-2">
-                                        <span class="badge bg-label-primary p-2"><i class="bx bx-dollar text-primary"></i></span>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <small>2022</small>
-                                        <h6 class="mb-0">$32.5k</h6>
-                                    </div>
-                                </div>
-                                <div class="d-flex">
-                                    <div class="me-2">
-                                        <span class="badge bg-label-info p-2"><i class="bx bx-wallet text-info"></i></span>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <small>2021</small>
-                                        <h6 class="mb-0">$41.2k</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--/ Total Revenue -->
-            <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
-                <div class="row">
-                    <div class="col-6 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-title d-flex align-items-start justify-content-between">
-                                    <div class="avatar flex-shrink-0">
-                                        <img src="{{asset('Admin/assets/img/icons/unicons/paypal.png')}}" alt="Credit Card" class="rounded" />
-                                    </div>
-                                    <div class="dropdown">
-                                        <button
-                                            class="btn p-0"
-                                            type="button"
-                                            id="cardOpt4"
-                                            data-bs-toggle="dropdown"
-                                            aria-haspopup="true"
-                                            aria-expanded="false"
-                                        >
-                                            <i class="bx bx-dots-vertical-rounded"></i>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
-                                            <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <span class="d-block mb-1">Payments</span>
-                                <h3 class="card-title text-nowrap mb-2">$2,456</h3>
-                                <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-title d-flex align-items-start justify-content-between">
-                                    <div class="avatar flex-shrink-0">
-                                        <img src="{{asset('Admin/assets/img/icons/unicons/cc-primary.png')}}" alt="Credit Card" class="rounded" />
-                                    </div>
-                                    <div class="dropdown">
-                                        <button
-                                            class="btn p-0"
-                                            type="button"
-                                            id="cardOpt1"
-                                            data-bs-toggle="dropdown"
-                                            aria-haspopup="true"
-                                            aria-expanded="false"
-                                        >
-                                            <i class="bx bx-dots-vertical-rounded"></i>
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="cardOpt1">
-                                            <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <span class="fw-semibold d-block mb-1">Transactions</span>
-                                <h3 class="card-title mb-2">$14,857</h3>
-                                <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- </div>
-    <div class="row"> -->
-                    <div class="col-12 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
-                                    <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
-                                        <div class="card-title">
-                                            <h5 class="text-nowrap mb-2">Profile Report</h5>
-                                            <span class="badge bg-label-warning rounded-pill">Year 2021</span>
-                                        </div>
-                                        <div class="mt-sm-auto">
-                                            <small class="text-success text-nowrap fw-semibold"
-                                            ><i class="bx bx-chevron-up"></i> 68.2%</small
-                                            >
-                                            <h3 class="mb-0">$84,686k</h3>
-                                        </div>
-                                    </div>
-                                    <div id="profileReportChart"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <!-- Order Statistics -->
-            <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
-                <div class="card h-100">
-                    <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                        <div class="card-title mb-0">
-                            <h5 class="m-0 me-2">Order Statistics</h5>
-                            <small class="text-muted">42.82k Total Sales</small>
-                        </div>
-                        <div class="dropdown">
-                            <button
-                                class="btn p-0"
-                                type="button"
-                                id="orederStatistics"
-                                data-bs-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                            >
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="orederStatistics">
-                                <a class="dropdown-item" href="javascript:void(0);">Select All</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Share</a>
-                            </div>
-                        </div>
-                    </div>
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <div class="d-flex flex-column align-items-center gap-1">
-                                <h2 class="mb-2">8,258</h2>
-                                <span>Total Orders</span>
+                        <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                                <i class="menu-icon tf-icons bx bx-dollar-circle" style="font-size: 2rem; color: green;"></i>
                             </div>
-                            <div id="orderStatisticsChart"></div>
-                        </div>
-                        <ul class="p-0 m-0">
-                            <li class="d-flex mb-4 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                            <span class="avatar-initial rounded bg-label-primary"
-                            ><i class="bx bx-mobile-alt"></i
-                                ></span>
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                        <h6 class="mb-0">Electronic</h6>
-                                        <small class="text-muted">Mobile, Earbuds, TV</small>
-                                    </div>
-                                    <div class="user-progress">
-                                        <small class="fw-semibold">82.5k</small>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="d-flex mb-4 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <span class="avatar-initial rounded bg-label-success"><i class="bx bx-closet"></i></span>
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                        <h6 class="mb-0">Fashion</h6>
-                                        <small class="text-muted">T-shirt, Jeans, Shoes</small>
-                                    </div>
-                                    <div class="user-progress">
-                                        <small class="fw-semibold">23.8k</small>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="d-flex mb-4 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <span class="avatar-initial rounded bg-label-info"><i class="bx bx-home-alt"></i></span>
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                        <h6 class="mb-0">Decor</h6>
-                                        <small class="text-muted">Fine Art, Dining</small>
-                                    </div>
-                                    <div class="user-progress">
-                                        <small class="fw-semibold">849k</small>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="d-flex">
-                                <div class="avatar flex-shrink-0 me-3">
-                            <span class="avatar-initial rounded bg-label-secondary"
-                            ><i class="bx bx-football"></i
-                                ></span>
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                        <h6 class="mb-0">Sports</h6>
-                                        <small class="text-muted">Football, Cricket Kit</small>
-                                    </div>
-                                    <div class="user-progress">
-                                        <small class="fw-semibold">99</small>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!--/ Order Statistics -->
-
-            <!-- Expense Overview -->
-            <div class="col-md-6 col-lg-4 order-1 mb-4">
-                <div class="card h-100">
-                    <div class="card-header">
-                        <ul class="nav nav-pills" role="tablist">
-                            <li class="nav-item">
+                            <div class="dropdown">
                                 <button
+                                    class="btn p-0"
                                     type="button"
-                                    class="nav-link active"
-                                    role="tab"
-                                    data-bs-toggle="tab"
-                                    data-bs-target="#navs-tabs-line-card-income"
-                                    aria-controls="navs-tabs-line-card-income"
-                                    aria-selected="true"
+                                    id="cardOpt3"
+                                    data-bs-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
                                 >
-                                    Income
+                                    <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
-                            </li>
-                            <li class="nav-item">
-                                <button type="button" class="nav-link" role="tab">Expenses</button>
-                            </li>
-                            <li class="nav-item">
-                                <button type="button" class="nav-link" role="tab">Profit</button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-body px-0">
-                        <div class="tab-content p-0">
-                            <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
-                                <div class="d-flex p-4 pt-3">
-                                    <div class="avatar flex-shrink-0 me-3">
-                                        <img src="{{asset('Admin/assets/img/icons/unicons/wallet.png')}}" alt="User" />
-                                    </div>
-                                    <div>
-                                        <small class="text-muted d-block">Total Balance</small>
-                                        <div class="d-flex align-items-center">
-                                            <h6 class="mb-0 me-1">$459.10</h6>
-                                            <small class="text-success fw-semibold">
-                                                <i class="bx bx-chevron-up"></i>
-                                                42.9%
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="incomeChart"></div>
-                                <div class="d-flex justify-content-center pt-4 gap-2">
-                                    <div class="flex-shrink-0">
-                                        <div id="expensesOfWeek"></div>
-                                    </div>
-                                    <div>
-                                        <p class="mb-n1 mt-1">Expenses This Week</p>
-                                        <small class="text-muted">$39 less than last week</small>
-                                    </div>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                                 </div>
                             </div>
                         </div>
+                        <span class="fw-semibold d-block mb-1">Total Revenue</span>
+                        <h3 class="card-title mb-2">${{ number_format($totalRevenue, 2) }}</h3>
                     </div>
                 </div>
             </div>
-            <!--/ Expense Overview -->
-
-            <!-- Transactions -->
-            <div class="col-md-6 col-lg-4 order-2 mb-4">
-                <div class="card h-100">
-                    <div class="card-header d-flex align-items-center justify-content-between">
-                        <h5 class="card-title m-0 me-2">Transactions</h5>
-                        <div class="dropdown">
-                            <button
-                                class="btn p-0"
-                                type="button"
-                                id="transactionID"
-                                data-bs-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                            >
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
-                                <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-lg-3 col-md-6 col-12 mb-4">
+                <div class="card">
                     <div class="card-body">
-                        <ul class="p-0 m-0">
-                            <li class="d-flex mb-4 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <img src="{{asset('Admin/assets/img/icons/unicons/paypal.png')}}" alt="User" class="rounded" />
+                        <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                                <!-- Thay thế thẻ <img> bằng thẻ <i> để sử dụng icon BoxIcons -->
+                                <i class="menu-icon tf-icons bx bx-box" style="font-size: 2rem; color: blue;"></i>
+                            </div>
+                            <div class="dropdown">
+                                <button
+                                    class="btn p-0"
+                                    type="button"
+                                    id="cardOpt6"
+                                    data-bs-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                                 </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                        <small class="text-muted d-block mb-1">Paypal</small>
-                                        <h6 class="mb-0">Send money</h6>
-                                    </div>
-                                    <div class="user-progress d-flex align-items-center gap-1">
-                                        <h6 class="mb-0">+82.6</h6>
-                                        <span class="text-muted">USD</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="d-flex mb-4 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <img src="{{asset('Admin/assets/img/icons/unicons/wallet.png')}}" alt="User" class="rounded" />
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                        <small class="text-muted d-block mb-1">Wallet</small>
-                                        <h6 class="mb-0">Mac'D</h6>
-                                    </div>
-                                    <div class="user-progress d-flex align-items-center gap-1">
-                                        <h6 class="mb-0">+270.69</h6>
-                                        <span class="text-muted">USD</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="d-flex mb-4 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <img src="{{asset('Admin/assets/img/icons/unicons/chart.png')}}" alt="User" class="rounded" />
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                        <small class="text-muted d-block mb-1">Transfer</small>
-                                        <h6 class="mb-0">Refund</h6>
-                                    </div>
-                                    <div class="user-progress d-flex align-items-center gap-1">
-                                        <h6 class="mb-0">+637.91</h6>
-                                        <span class="text-muted">USD</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="d-flex mb-4 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <img src="{{asset('Admin/assets/img/icons/unicons/cc-success.png')}}" alt="User" class="rounded" />
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                        <small class="text-muted d-block mb-1">Credit Card</small>
-                                        <h6 class="mb-0">Ordered Food</h6>
-                                    </div>
-                                    <div class="user-progress d-flex align-items-center gap-1">
-                                        <h6 class="mb-0">-838.71</h6>
-                                        <span class="text-muted">USD</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="d-flex mb-4 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <img src="{{asset('Admin/assets/img/icons/unicons/wallet.png')}}" alt="User" class="rounded" />
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                        <small class="text-muted d-block mb-1">Wallet</small>
-                                        <h6 class="mb-0">Starbucks</h6>
-                                    </div>
-                                    <div class="user-progress d-flex align-items-center gap-1">
-                                        <h6 class="mb-0">+203.33</h6>
-                                        <span class="text-muted">USD</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="d-flex">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <img src="{{asset('Admin/assets/img/icons/unicons/cc-warning.png')}}" alt="User" class="rounded" />
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                        <small class="text-muted d-block mb-1">Mastercard</small>
-                                        <h6 class="mb-0">Ordered Food</h6>
-                                    </div>
-                                    <div class="user-progress d-flex align-items-center gap-1">
-                                        <h6 class="mb-0">-92.45</h6>
-                                        <span class="text-muted">USD</span>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                            </div>
+                        </div>
+                        <span class="fw-semibold d-block mb-1">Total Products</span>
+                        <h3 class="card-title mb-2">{{ $totalProducts }}</h3>
                     </div>
                 </div>
             </div>
-            <!--/ Transactions -->
+            <div class="col-lg-3 col-md-6 col-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                                <!-- Thay thế thẻ <img> bằng thẻ <i> để sử dụng icon BoxIcons -->
+                                <i class="menu-icon tf-icons bx bx-time-five" style="font-size: 2rem; color: orange;"></i>
+                            </div>
+                            <div class="dropdown">
+                                <button
+                                    class="btn p-0"
+                                    type="button"
+                                    id="cardOpt6"
+                                    data-bs-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="fw-semibold d-block mb-1">Pending Orders</span>
+                        <h3 class="card-title mb-2">{{ $totalPendingOrders }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                                <!-- Thay thế thẻ <img> bằng thẻ <i> để sử dụng icon BoxIcons -->
+                                <i class="menu-icon tf-icons bx bx-x-circle" style="font-size: 2rem; color: red;"></i>
+                            </div>
+                            <div class="dropdown">
+                                <button
+                                    class="btn p-0"
+                                    type="button"
+                                    id="cardOpt6"
+                                    data-bs-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="fw-semibold d-block mb-1">Canceled Orders</span>
+                        <h3 class="card-title mb-2">{{ $totalCanceledOrders }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                                <!-- Sử dụng icon BoxIcons -->
+                                <i class="menu-icon tf-icons bx bx-package" style="font-size: 2rem; color: gray;"></i>
+                            </div>
+                            <div class="dropdown">
+                                <button
+                                    class="btn p-0"
+                                    type="button"
+                                    id="cardOpt6"
+                                    data-bs-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="fw-semibold d-block mb-1">Out of Stock Products</span>
+                        <h3 class="card-title mb-2">{{ $totalOutOfStockProducts }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                                <!-- Sử dụng icon BoxIcons -->
+                                <i class="menu-icon tf-icons bx bx-user" style="font-size: 2rem; color: purple;"></i>
+                            </div>
+                            <div class="dropdown">
+                                <button
+                                    class="btn p-0"
+                                    type="button"
+                                    id="cardOpt6"
+                                    data-bs-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="fw-semibold d-block mb-1">Total Customers</span>
+                        <h3 class="card-title mb-2">{{ $totalCustomers }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                                <!-- Sử dụng icon BoxIcons -->
+                                <i class="menu-icon tf-icons bx bx-message-square-detail" style="font-size: 2rem; color: yellow;"></i>
+                            </div>
+                            <div class="dropdown">
+                                <button
+                                    class="btn p-0"
+                                    type="button"
+                                    id="cardOpt6"
+                                    data-bs-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="fw-semibold d-block mb-1">Pending Reviews</span>
+                        <h3 class="card-title mb-2">{{ $totalPendingReviews }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                                <!-- Sử dụng icon BoxIcons -->
+                                <i class="menu-icon tf-icons bx bx-reply" style="font-size: 2rem; color: teal;"></i>
+                            </div>
+                            <div class="dropdown">
+                                <button
+                                    class="btn p-0"
+                                    type="button"
+                                    id="cardOpt6"
+                                    data-bs-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="fw-semibold d-block mb-1">Pending Product Returns</span>
+                        <h3 class="card-title mb-2">{{ $totalPendingReturns }}</h3>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- / Content -->
+    {{--danh sách 10 sản phẩm bán chạy nhất--}}
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="card">
+            <h5 class="card-header">Top 10 Best Selling Products List</h5>
+            <div class="table-responsive text-nowrap">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Product Code</th>
+                        <th>Images</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Average Rating</th>
+                        <th>Total Sold</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                    @if($topSellingProducts->isEmpty())
+                        <tr>
+                            <td colspan="6" class="text-center text-danger">No data available</td>
+                        </tr>
+                    @else
+                        @foreach($topSellingProducts as $product)
+                            <tr>
+
+                                <td><strong>{{ $product->product_code }}</strong></td>
+                                <td>
+                                    @if($product->images->isNotEmpty())
+                                        <img src="{{ asset($product->images->first()->image_path) }}" alt="Product Image" style="width: 150px; height: 150px;">
+                                    @else
+                                        <img src="{{ asset('path/to/default/image.png') }}" alt="Default Image" style="width: 150px; height: 150px;">
+                                    @endif
+                                </td>
+                                <td style="word-wrap: break-word; word-break: break-word; white-space: normal;">
+                                    {{$product->product_name}}
+                                </td>
+
+                                <td>${{ $product->price }}</td>
+                                <td>
+                                    @php
+                                        $averageRating = $product->averageAcceptedRating();
+                                        $fullStars = floor($averageRating);
+                                        $halfStar = $averageRating - $fullStars >= 0.5 ? 1 : 0;
+                                    @endphp
+                                    @if($averageRating > 0)
+                                        @for ($i = 0; $i < $fullStars; $i++)
+                                            <i class="bx bxs-star text-warning"></i>
+                                        @endfor
+                                        @if ($halfStar)
+                                            <i class="bx bxs-star-half text-warning"></i>
+                                        @endif
+                                        @for ($i = $fullStars + $halfStar; $i < 5; $i++)
+                                            <i class="bx bx-star text-warning"></i>
+                                        @endfor
+                                    @else
+                                        No reviews
+                                    @endif
+                                </td>
+                                <td>{{ $product->total_sold }}</td>
+                            </tr>
+                        @endforeach
+                    @endif
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    {{--danh sách sản phẩm hết hàng--}}
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="card">
+            <h5 class="card-header">List of out of stock products</h5>
+            <div class="table-responsive text-nowrap">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Product Code</th>
+                        <th>Images</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                    @if($outOfStockProducts->isEmpty())
+                        <tr>
+                            <td colspan="6" class="text-center text-danger">No data available</td>
+                        </tr>
+                    @else
+                        @foreach($outOfStockProducts as $product)
+                            <tr>
+                                <td><strong>{{ $product->product_code }}</strong></td>
+                                <td>
+                                    @if($product->images->isNotEmpty())
+                                        <img src="{{ asset($product->images->first()->image_path) }}" alt="Product Image" style="width: 150px; height: 150px;">
+                                    @else
+                                        <img src="{{ asset('path/to/default/image.png') }}" alt="Default Image" style="width: 150px; height: 150px;">
+                                    @endif
+                                </td>
+                                <td style="word-wrap: break-word; word-break: break-word; white-space: normal;">
+                                    {{$product->product_name}}
+                                </td>
+
+                                <td>${{ $product->price }}</td>
+                                <td>{{ $product->qty }}</td>
+                            </tr>
+                        @endforeach
+                    @endif
+                    </tbody>
+                </table>
+                @if($outOfStockProducts->total() > 0)
+                    <nav aria-label="Page navigation" style="margin-left: 12px">
+                        <ul class="pagination">
+                            <!-- Link tới trang đầu tiên -->
+                            <li class="page-item {{ ($outOfStockProducts->currentPage() == 1) ? ' disabled' : '' }}">
+                                <a class="page-link" href="{{ $outOfStockProducts->url(1) }}"><i class="tf-icon bx bx-chevrons-left"></i></a>
+                            </li>
+                            <!-- Link tới trang trước -->
+                            <li class="page-item {{ ($outOfStockProducts->currentPage() == 1) ? ' disabled' : '' }}">
+                                <a class="page-link" href="{{ $outOfStockProducts->previousPageUrl() }}"><i class="tf-icon bx bx-chevron-left"></i></a>
+                            </li>
+                            @if ($outOfStockProducts->total() <= 10)
+                                <!-- Hiển thị trang đầu tiên -->
+                                <li class="page-item active">
+                                    <a class="page-link" href="{{ $outOfStockProducts->url(1) }}">1</a>
+                                </li>
+                            @else
+                                <!-- Hiển thị các liên kết trang -->
+                                @if ($outOfStockProducts->lastPage() > 1)
+                                    <!-- Hiển thị trang đầu tiên -->
+                                    <li class="page-item {{ ($outOfStockProducts->currentPage() == 1) ? ' active' : '' }}">
+                                        <a class="page-link" href="{{ $outOfStockProducts->url(1) }}">1</a>
+                                    </li>
+                                    @if ($outOfStockProducts->currentPage() > 3)
+                                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                                    @endif
+                                    @for ($i = max(2, $outOfStockProducts->currentPage() - 1); $i <= min($outOfStockProducts->currentPage() + 1, $outOfStockProducts->lastPage() - 1); $i++)
+                                        <li class="page-item {{ ($outOfStockProducts->currentPage() == $i) ? ' active' : '' }}">
+                                            <a class="page-link" href="{{ $outOfStockProducts->url($i) }}">{{ $i }}</a>
+                                        </li>
+                                    @endfor
+                                    @if ($outOfStockProducts->currentPage() < $outOfStockProducts->lastPage() - 2)
+                                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                                    @endif
+                                    <!-- Hiển thị trang cuối cùng -->
+                                    <li class="page-item {{ ($outOfStockProducts->currentPage() == $outOfStockProducts->lastPage()) ? ' active' : '' }}">
+                                        <a class="page-link" href="{{ $outOfStockProducts->url($outOfStockProducts->lastPage()) }}">{{ $outOfStockProducts->lastPage() }}</a>
+                                    </li>
+                                @endif
+                            @endif
+                            <!-- Link tới trang kế tiếp -->
+                            <li class="page-item {{ ($outOfStockProducts->currentPage() == $outOfStockProducts->lastPage()) ? ' disabled' : '' }}">
+                                <a class="page-link" href="{{ $outOfStockProducts->nextPageUrl() }}"><i class="tf-icon bx bx-chevron-right"></i></a>
+                            </li>
+                            <!-- Link tới trang cuối cùng -->
+                            <li class="page-item {{ ($outOfStockProducts->currentPage() == $outOfStockProducts->lastPage()) ? ' disabled' : '' }}">
+                                <a class="page-link" href="{{ $outOfStockProducts->url($outOfStockProducts->lastPage()) }}"><i class="tf-icon bx bx-chevrons-right"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                @endif
+            </div>
+        </div>
+    </div>
+    {{--danh sách đơn hàng pending--}}
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="card">
+            <h5 class="card-header">Pending order list</h5>
+            <div class="table-responsive text-nowrap">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Order code</th>
+                        <th>Total amount</th>
+                        <th>Payment method</th>
+                        <th>Is paid</th>
+                        <th>Shipping method</th>
+                        <th>Created at</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                    @if($pendingOrders->isEmpty())
+                        <tr>
+                            <td colspan="6" class="text-center text-danger">No data available</td>
+                        </tr>
+                    @else
+                        @foreach($pendingOrders as $order)
+                            <tr>
+                                <td> <strong>{{$order->order_code}}</strong></td>
+                                <td>${{$order->total_amount}}</td>
+                                <td>{{$order->payment_method}}</td>
+                                <td>
+                                    @switch($order->is_paid)
+                                        @case('paid')
+                                            <span class="badge bg-label-success me-1">Paid</span>
+                                            @break
+
+                                        @case('unpaid')
+                                            <span class="badge bg-label-danger me-1">Unpaid</span>
+                                            @break
+                                        @default
+                                            <span class="badge bg-label-secondary me-1">Unknown</span>
+                                    @endswitch
+                                </td>
+                                <td>{{$order->shipping_method}}</td>
+                                <td>{{$order->created_at ? $order->created_at->format('d/m/Y') : 'N/A' }}</td>
+                                <td>
+                                    @switch($order->status)
+                                        @case('pending')
+                                            <span class="badge bg-label-warning me-1">Pending</span>
+                                            @break
+
+                                        @case('confirmed')
+                                            <span class="badge bg-label-success me-1">Confirmed</span>
+                                            @break
+
+                                        @case('shipping')
+                                            <span class="badge bg-label-info me-1">Shipping</span>
+                                            @break
+
+                                        @case('shipped')
+                                            <span class="badge bg-label-primary me-1">Shipped</span>
+                                            @break
+
+                                        @case('complete')
+                                            <span class="badge bg-label-success me-1">Complete</span>
+                                            @break
+
+                                        @case('cancel')
+                                            <span class="badge bg-label-danger me-1">Cancel</span>
+                                            @break
+
+                                        @default
+                                            <span class="badge bg-label-secondary me-1">Unknown</span>
+                                    @endswitch
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.orderDetails', $order->id) }}" class="btn btn-info">
+                                        <i class="bx bx-show me-1"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
+                    </tbody>
+                </table>
+                @if($pendingOrders->total() > 0)
+                    <nav aria-label="Page navigation" style="margin-left: 12px">
+                        <ul class="pagination">
+                            <!-- Link tới trang đầu tiên -->
+                            <li class="page-item {{ ($pendingOrders->currentPage() == 1) ? ' disabled' : '' }}">
+                                <a class="page-link" href="{{ $pendingOrders->url(1) }}"><i class="tf-icon bx bx-chevrons-left"></i></a>
+                            </li>
+                            <!-- Link tới trang trước -->
+                            <li class="page-item {{ ($pendingOrders->currentPage() == 1) ? ' disabled' : '' }}">
+                                <a class="page-link" href="{{ $pendingOrders->previousPageUrl() }}"><i class="tf-icon bx bx-chevron-left"></i></a>
+                            </li>
+                            @if ($pendingOrders->total() <= 10)
+                                <!-- Hiển thị trang đầu tiên -->
+                                <li class="page-item active">
+                                    <a class="page-link" href="{{ $pendingOrders->url(1) }}">1</a>
+                                </li>
+                            @else
+                                <!-- Hiển thị các liên kết trang -->
+                                @if ($pendingOrders->lastPage() > 1)
+                                    <!-- Hiển thị trang đầu tiên -->
+                                    <li class="page-item {{ ($pendingOrders->currentPage() == 1) ? ' active' : '' }}">
+                                        <a class="page-link" href="{{ $pendingOrders->url(1) }}">1</a>
+                                    </li>
+                                    @if ($pendingOrders->currentPage() > 3)
+                                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                                    @endif
+                                    @for ($i = max(2, $pendingOrders->currentPage() - 1); $i <= min($pendingOrders->currentPage() + 1, $pendingOrders->lastPage() - 1); $i++)
+                                        <li class="page-item {{ ($pendingOrders->currentPage() == $i) ? ' active' : '' }}">
+                                            <a class="page-link" href="{{ $pendingOrders->url($i) }}">{{ $i }}</a>
+                                        </li>
+                                    @endfor
+                                    @if ($pendingOrders->currentPage() < $pendingOrders->lastPage() - 2)
+                                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                                    @endif
+                                    <!-- Hiển thị trang cuối cùng -->
+                                    <li class="page-item {{ ($pendingOrders->currentPage() == $pendingOrders->lastPage()) ? ' active' : '' }}">
+                                        <a class="page-link" href="{{ $pendingOrders->url($pendingOrders->lastPage()) }}">{{ $pendingOrders->lastPage() }}</a>
+                                    </li>
+                                @endif
+                            @endif
+                            <!-- Link tới trang kế tiếp -->
+                            <li class="page-item {{ ($pendingOrders->currentPage() == $pendingOrders->lastPage()) ? ' disabled' : '' }}">
+                                <a class="page-link" href="{{ $pendingOrders->nextPageUrl() }}"><i class="tf-icon bx bx-chevron-right"></i></a>
+                            </li>
+                            <!-- Link tới trang cuối cùng -->
+                            <li class="page-item {{ ($pendingOrders->currentPage() == $pendingOrders->lastPage()) ? ' disabled' : '' }}">
+                                <a class="page-link" href="{{ $pendingOrders->url($pendingOrders->lastPage()) }}"><i class="tf-icon bx bx-chevrons-right"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                @endif
+            </div>
+        </div>
+    </div>
+    {{--danh sách review pending--}}
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="card">
+            <h5 class="card-header">Pending review list</h5>
+            <div class="table-responsive text-nowrap">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Image</th>
+                        <th>Product name</th>
+                        <th>comment</th>
+                        <th>Rating value</th>
+                        <th>Created at</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                    @if($pendingReviews->isEmpty())
+                        <tr>
+                            <td colspan="6" class="text-center text-danger">No data available</td>
+                        </tr>
+                    @else
+                        @foreach($pendingReviews as $review)
+                            <tr>
+                                <td>{{$review->id}}</td>
+                                <td>
+                                    @if($review->product && $review->product->images->isNotEmpty())
+                                        <img src="{{ asset($review->product->images->first()->image_path) }}" alt="Product Image" style="width: 100px; height: 100px;">
+                                    @else
+                                        <img src="{{ asset('path/to/default/image.png') }}" alt="Default Image" style="width: 100px; height: 100px;">
+                                    @endif
+                                </td>
+                                <td>{{$review->product->product_name}}</td>
+                                <td style="word-wrap: break-word; word-break: break-word; white-space: normal;">
+                                    {{$review->comment}}
+                                </td>
+                                <td>
+                                    @for ($i = 0; $i < $review->rating_value; $i++)
+                                        <i class="bx bxs-star text-warning"></i>
+                                    @endfor
+                                    @for ($i = $review->rating_value; $i < 5; $i++)
+                                        <i class="bx bx-star text-warning"></i>
+                                    @endfor
+                                </td>
+                                <td>{{$review->created_at ? $review->created_at->format('d/m/Y') : 'N/A' }}</td>
+                                <td>
+                                    @switch($review->status)
+                                        @case('pending')
+                                            <span class="badge bg-label-warning me-1">Pending</span>
+                                            @break
+                                        @case('accept')
+                                            <span class="badge bg-label-success me-1">Accept</span>
+                                            @break
+
+                                        @case('reject')
+                                            <span class="badge bg-label-danger me-1">Reject</span>
+                                            @break
+
+                                        @default
+                                            <span class="badge bg-label-secondary me-1">Unknown</span>
+                                    @endswitch
+                                </td>
+
+                                <td>
+                                    @if($review->status == 'pending')
+                                        <form action="{{ route('admin.updateReviewStatus', ['id' => $review->id, 'status' => 'accept']) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('PATCH')
+                                            <button type="submit" class="btn btn-success">Accept</button>
+                                        </form>
+                                        <form action="{{ route('admin.updateReviewStatus', ['id' => $review->id, 'status' => 'reject']) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('PATCH')
+                                            <button type="submit" class="btn btn-danger">Reject</button>
+                                        </form>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
+                    </tbody>
+                </table>
+                @if($pendingReviews->total() > 0)
+                    <nav aria-label="Page navigation" style="margin-left: 12px">
+                        <ul class="pagination">
+                            <!-- Link tới trang đầu tiên -->
+                            <li class="page-item {{ ($pendingReviews->currentPage() == 1) ? ' disabled' : '' }}">
+                                <a class="page-link" href="{{ $pendingReviews->url(1) }}"><i class="tf-icon bx bx-chevrons-left"></i></a>
+                            </li>
+                            <!-- Link tới trang trước -->
+                            <li class="page-item {{ ($pendingReviews->currentPage() == 1) ? ' disabled' : '' }}">
+                                <a class="page-link" href="{{ $pendingReviews->previousPageUrl() }}"><i class="tf-icon bx bx-chevron-left"></i></a>
+                            </li>
+                            @if ($pendingReviews->total() <= 10)
+                                <!-- Hiển thị trang đầu tiên -->
+                                <li class="page-item active">
+                                    <a class="page-link" href="{{ $pendingReviews->url(1) }}">1</a>
+                                </li>
+
+                            @else
+                                <!-- Hiển thị các liên kết trang -->
+                                @if ($pendingReviews->lastPage() > 1)
+                                    <!-- Hiển thị trang đầu tiên -->
+                                    <li class="page-item {{ ($pendingReviews->currentPage() == 1) ? ' active' : '' }}">
+                                        <a class="page-link" href="{{ $pendingReviews->url(1) }}">1</a>
+                                    </li>
+                                    @if ($pendingReviews->currentPage() > 3)
+                                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                                    @endif
+                                    @for ($i = max(2, $pendingReviews->currentPage() - 1); $i <= min($pendingReviews->currentPage() + 1, $pendingReviews->lastPage() - 1); $i++)
+                                        <li class="page-item {{ ($pendingReviews->currentPage() == $i) ? ' active' : '' }}">
+                                            <a class="page-link" href="{{ $pendingReviews->url($i) }}">{{ $i }}</a>
+                                        </li>
+                                    @endfor
+                                    @if ($pendingReviews->currentPage() < $pendingReviews->lastPage() - 2)
+                                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                                    @endif
+                                    <!-- Hiển thị trang cuối cùng -->
+                                    <li class="page-item {{ ($pendingReviews->currentPage() == $pendingReviews->lastPage()) ? ' active' : '' }}">
+                                        <a class="page-link" href="{{ $pendingReviews->url($pendingReviews->lastPage()) }}">{{ $pendingReviews->lastPage() }}</a>
+                                    </li>
+                                @endif
+                            @endif
+                            <!-- Link tới trang kế tiếp -->
+                            <li class="page-item {{ ($pendingReviews->currentPage() == $pendingReviews->lastPage()) ? ' disabled' : '' }}">
+                                <a class="page-link" href="{{ $pendingReviews->nextPageUrl() }}"><i class="tf-icon bx bx-chevron-right"></i></a>
+                            </li>
+                            <!-- Link tới trang cuối cùng -->
+                            <li class="page-item {{ ($pendingReviews->currentPage() == $pendingReviews->lastPage()) ? ' disabled' : '' }}">
+                                <a class="page-link" href="{{ $pendingReviews->url($pendingReviews->lastPage()) }}"><i class="tf-icon bx bx-chevrons-right"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                @endif
+            </div>
+        </div>
+    </div>
+
 @endsection
+
+
