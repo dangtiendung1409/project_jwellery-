@@ -142,6 +142,17 @@
                                         readonly
                                     />
                                 </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="category" class="form-label">Created at</label>
+                                    <input
+                                        class="form-control"
+                                        type="text"
+                                        id="created_at"
+                                        name="created_at"
+                                        value="{{$product->created_at ? $product->created_at->format('d/m/Y') : 'N/A' }}"
+                                        readonly
+                                    />
+                                </div>
                             </div>
                             <a href="{{ route('admin.products') }}" class="btn btn-secondary">Back</a>
                         </form>

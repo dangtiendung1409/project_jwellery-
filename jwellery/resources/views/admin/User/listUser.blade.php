@@ -37,7 +37,17 @@
 
         <!-- Basic Bootstrap Table -->
         <div class="card">
-            <h5 class="card-header">Table Basic</h5>
+            <form class="card-header-icon p-2 m-2" method="get" onchange="this.submit()">
+                <select style="padding: 7px 13px; border: 2px solid #F1F1F1;" name="size">
+                    <option value="10" {{ request('size') == 10 ? 'selected' : '' }}>10</option>
+                    <option value="20" {{ request('size') == 20 ? 'selected' : '' }}>20</option>
+                    <option value="50" {{ request('size') == 50 ? 'selected' : '' }}>50</option>
+                    <option value="100" {{ request('size') == 100 ? 'selected' : '' }}>100</option>
+                </select>
+
+                <input type="hidden" name="page" value="{{ request('page', 1) }}">
+            </form>
+
             <div class="table-responsive text-nowrap">
                 <table class="table">
                     <thead>

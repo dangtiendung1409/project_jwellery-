@@ -13,8 +13,39 @@ use Illuminate\Support\Facades\Storage;
 
 class productController extends Controller
 {
-    public function products(){
-        $products = Product::with(['images', 'category'])->paginate(10);
+    public function products(Request $request)
+    {
+        $query = Product::with(['images', 'category']);
+
+        // Lọc theo mã sản phẩm
+        if ($request->filled('product_code')) {
+            $query->where('product_code', 'like', '%' . $request->input('product_code') . '%');
+        }
+
+        // Lọc theo tên sản phẩm
+        if ($request->filled('product_name')) {
+            $query->where('product_name', 'like', '%' . $request->input('product_name') . '%');
+        }
+
+        // Lọc theo giá
+        if ($request->filled('min_price')) {
+            $query->where('price', '>=', $request->input('min_price'));
+        }
+        if ($request->filled('max_price')) {
+            $query->where('price', '<=', $request->input('max_price'));
+        }
+
+        // Lọc theo ngày tạo từ ngày nào đến ngày nào
+        if ($request->filled('start_date')) {
+            $query->whereDate('created_at', '>=', $request->input('start_date'));
+        }
+        if ($request->filled('end_date')) {
+            $query->whereDate('created_at', '<=', $request->input('end_date'));
+        }
+
+        $size = $request->input('size', 10);
+        $products = $query->paginate($size)->appends($request->all());
+
         return view('admin.Product.product', compact('products'));
     }
     public function detailProduct($id){
